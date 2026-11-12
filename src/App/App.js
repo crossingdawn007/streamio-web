@@ -16,6 +16,7 @@ const { default: UpdaterBanner } = require('./UpdaterBanner');
 const { default: ShortcutsModal } = require('./ShortcutsModal');
 const { default: GamepadModal } = require('./GamepadModal');
 const { default: useInterfaceScale } = require('./useInterfaceScale');
+const { default: useSpatialSettingsSync } = require('stremio/common/useSpatialSettingsSync');
 const styles = require('./styles');
 
 const ProtectedRoutes = withCoreSuspender(Routes);
@@ -24,6 +25,7 @@ const NAVIGATE_TABS_ROUTES = ['/', '/discover', '/library', '/calendar', '/addon
 const App = () => {
     const core = useCore();
     const profile = useProfile();
+    useSpatialSettingsSync();
     const changeInterfaceScale = useInterfaceScale(profile);
     const { i18n } = useTranslation();
     const { shell } = usePlatform();

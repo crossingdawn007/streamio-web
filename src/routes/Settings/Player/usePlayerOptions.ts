@@ -329,6 +329,38 @@ const usePlayerOptions = (profile: Profile) => {
         }
     }), [profile.settings]);
 
+    const spatialAudioToggle = useMemo(() => ({
+        checked: profile.settings.spatialAudio,
+        onClick: () => {
+            core.transport.dispatch({
+                action: 'Ctx',
+                args: {
+                    action: 'UpdateSettings',
+                    args: {
+                        ...profile.settings,
+                        spatialAudio: !profile.settings.spatialAudio
+                    }
+                }
+            });
+        }
+    }), [profile.settings]);
+
+    const spatialOsdToggle = useMemo(() => ({
+        checked: profile.settings.spatialOsd,
+        onClick: () => {
+            core.transport.dispatch({
+                action: 'Ctx',
+                args: {
+                    action: 'UpdateSettings',
+                    args: {
+                        ...profile.settings,
+                        spatialOsd: !profile.settings.spatialOsd
+                    }
+                }
+            });
+        }
+    }), [profile.settings]);
+
     const gpuVideoProcessingToggle = useMemo(() => ({
         checked: profile.settings.gpuVideoProcessing,
         onClick: () => {
@@ -410,6 +442,8 @@ const usePlayerOptions = (profile: Profile) => {
         bingeWatchingToggle,
         playInBackgroundToggle,
         hardwareDecodingToggle,
+        spatialAudioToggle,
+        spatialOsdToggle,
         gpuVideoProcessingToggle,
         videoModeSelect,
         pauseOnMinimizeToggle,

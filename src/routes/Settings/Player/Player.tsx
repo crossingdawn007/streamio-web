@@ -30,6 +30,8 @@ const Player = forwardRef<HTMLDivElement, Props>(({ profile }: Props, ref) => {
         bingeWatchingToggle,
         playInBackgroundToggle,
         hardwareDecodingToggle,
+        spatialAudioToggle,
+        spatialOsdToggle,
         gpuVideoProcessingToggle,
         videoModeSelect,
         pauseOnMinimizeToggle,
@@ -144,6 +146,22 @@ const Player = forwardRef<HTMLDivElement, Props>(({ profile }: Props, ref) => {
                             <Toggle
                                 tabIndex={-1}
                                 {...hardwareDecodingToggle}
+                            />
+                        </Option>
+                }
+                {
+                    shell.active && profile.settings.spatialAudio !== undefined &&
+                        <Option label={'Spatial audio (Omniphony)'}>
+                            <Toggle
+                                {...spatialAudioToggle}
+                            />
+                        </Option>
+                }
+                {
+                    shell.active && profile.settings.spatialOsd !== undefined &&
+                        <Option label={'Object overlay'}>
+                            <Toggle
+                                {...spatialOsdToggle}
                             />
                         </Option>
                 }

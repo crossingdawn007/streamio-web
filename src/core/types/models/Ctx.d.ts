@@ -35,6 +35,8 @@ type Settings = {
     secondarySubtitlesLanguage: string | null,
     seekTimeDuration: number,
     seekShortTimeDuration: number,
+    spatialAudio: boolean,
+    spatialOsd: boolean,
     streamingServerUrl: string,
     remoteHttps: string | null,
     streamingServerWarningDismissed: Date | null,
